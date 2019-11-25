@@ -14,9 +14,12 @@
         td{
             background: lightblue;
         }
-        td:hover{
+        .name{
             background: lightcoral;
         }
+        /* td:hover{
+            background: lightcoral;
+        } */
     </style>
 </head>
 <body>
@@ -28,30 +31,57 @@
             <td>4</td>
         </tr>
         <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
         </tr>
         <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
         </tr>
         <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
         </tr>
     </table>
     <div>
-        <button>开始</button>
-        <button>暂停</button>
+        <button id="bt1">开始</button>
+        <button id="bt2">暂停</button>
     </div>
     <script>
-        var trLength = document.getElementsByTagName('tr');
+        var bt1 = document.getElementById('bt1');
+        var bt2 = document.getElementById('bt2');
+        var tdLength = document.getElementsByTagName('td');
+        // var arr = [];
+        // arr = tdLength;
+        var randomNum;
+        var randomName;
+        var timer;
+        bt1.onclick = function(){
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var length = tdLength.length;
+                for(i=0; i<length; i++){
+                    tdLength[i].style.background = "";
+                }
+                randomNum = Math.floor(Math.random() * length);
+                randomName = tdLength[randomNum];
+                randomName.style.background = 'lightcoral';
+            },100);
+        }
+        bt2.onclick = function(){
+            clearInterval(timer);
+            var randomName = tdLength[randomNum];
+            // randomName.style.background = 'lightcoral';
+            randomName.className = 'name';
+            // var num = randomNum - 1;
+            // delete arr[num];
+        }
     </script>
 </body>
 </html>
